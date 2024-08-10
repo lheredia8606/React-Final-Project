@@ -1,0 +1,34 @@
+header {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #455555;
+  color: white;
+  align-items: center;
+}
+
+.logo {
+  margin: 10px;
+}
+.nav-ul {
+  display: flex;
+}
+
+.nav-ul li {
+  list-style-type: none;
+  margin-right: 16px;
+}
+
+.nav-ul li button {
+  padding: 5px 10px;
+  color: #455555;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.main-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

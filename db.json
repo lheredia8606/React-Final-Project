@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": "guest",
+      "userName": "Guest",
+      "password": "",
+      "userLevel": 0
+    },
+    {
+      "id": "patient",
+      "userName": "Patient",
+      "password": "8606",
+      "userLevel": 1
+    },
+    {
+      "id": "pharmacist",
+      "userName": "Pharmacist",
+      "password": "8606",
+      "userLevel": 2
+    },
+    {
+      "id": "provider",
+      "userName": "Provider",
+      "password": "8606",
+      "userLevel": 3
+    },
+    {
+      "id": "admin",
+      "userName": "admin",
+      "password": "8606",
+      "userLevel": 4
+    }
+  ]
+}
