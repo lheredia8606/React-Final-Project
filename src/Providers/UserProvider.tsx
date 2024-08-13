@@ -7,6 +7,7 @@ type TUserProviderProps = {
   currentUser: TUser;
   signIn: (userName: string, password: string) => TUser | undefined;
   signOut: () => void;
+  allUsers: TUser[] | undefined;
 };
 
 const usersCRUD = new ApiCrud<TUser>("http://localhost:3000/users");
@@ -14,7 +15,6 @@ const usersCRUD = new ApiCrud<TUser>("http://localhost:3000/users");
 const userContext = createContext({} as TUserProviderProps);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [currentUser, setCurrentUser] = useState<TUser>(guestUser);
   const { data: allUsers, isLoading } = useQuery(
     "fetch-users",
     () => usersCRUD.getAll(),
@@ -23,13 +23,16 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     }
   );
 
+  const [currentUser, setCurrentUser] = useState<TUser>(guestUser);
   const signIn = (userName: string, password: string) => {
     return allUsers?.find((user) => {
       if (
-        userName.toLowerCase === user.userName.toLowerCase &&
+        userName.toLowerCase() === user.userName.toLowerCase() &&
         password === user.password
       ) {
         setCurrentUser(user);
+        console.log(`user found ${user.userName}`);
+        console.log(`curent user ${currentUser.userName}`);
         return user;
       }
     });
@@ -52,6 +55,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
           currentUser,
           signIn,
           signOut,
+          allUsers,
         }}
       >
         {children}

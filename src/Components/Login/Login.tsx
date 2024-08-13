@@ -1,26 +1,44 @@
+import { useNavigate } from "react-router-dom";
 import { globalUser } from "../../Providers/UserProvider";
 import "./login-style.css";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const Login = () => {
-  const { signIn: autenticateUser } = globalUser();
+  const navigate = useNavigate();
+  const { signIn: autenticateUser, currentUser } = globalUser();
   const [userNameInput, setUserNameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
-  const onFormSubmit = () => {
-    if (autenticateUser(userNameInput, passwordInput)) {
-      console.log("user Autenticated");
+  const onSubmit = () => {
+    const userData = autenticateUser(userNameInput, passwordInput);
+    console.log(userData);
+
+    if (userData) {
+      console.log(`/userpage/${userData.id}`);
+      navigate(`/userpage/${userData.id}`);
     } else {
       console.log("user not found");
     }
   };
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
   return (
     <>
-      <div className="login-wrapper">
+      <div
+        className="login-wrapper"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            onSubmit();
+          }
+        }}
+      >
         <h1>Sign in</h1>
         <div className="login-fields-container">
           <label>Username: </label>
           <input
             type="text"
+            ref={inputRef}
             value={userNameInput}
             onChange={(e) => setUserNameInput(e.target.value)}
           />
@@ -32,7 +50,7 @@ export const Login = () => {
           />
           <div>
             <button>Cancel</button>
-            <button onClick={onFormSubmit}>Sign in</button>
+            <button onClick={onSubmit}>Sign in</button>
           </div>
         </div>
       </div>

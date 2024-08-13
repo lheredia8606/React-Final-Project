@@ -4,31 +4,60 @@
       "id": "guest",
       "userName": "Guest",
       "password": "",
+      "firstName": "Guest",
+      "lastName": "Doe",
       "userLevel": 0
     },
     {
       "id": "patient",
       "userName": "Patient",
       "password": "8606",
+      "firstName": "Patient",
+      "lastName": "Doe",
       "userLevel": 1
     },
     {
       "id": "pharmacist",
       "userName": "Pharmacist",
       "password": "8606",
+      "firstName": "Pharmacist",
+      "lastName": "Doe",
       "userLevel": 2
     },
     {
       "id": "provider",
       "userName": "Provider",
       "password": "8606",
+      "firstName": "Provider",
+      "lastName": "Doe",
       "userLevel": 3
     },
     {
       "id": "admin",
       "userName": "admin",
       "password": "8606",
+      "firstName": "Admin",
+      "lastName": "Doe",
       "userLevel": 4
+    }
+  ],
+  "medications": [
+    {
+      "id": "23asd",
+      "name": "Enalapril",
+      "dosageForm": "Tablet",
+      "strength": "string",
+      "meassure": "g",
+      "equivalents": []
+    }
+  ],
+  "userMeds": [
+    {
+      "id": "3456edff",
+      "userId": "patient",
+      "medId": "23asd",
+      "status": "Current",
+      "directions": "1T PO QD"
     }
   ]
 }
