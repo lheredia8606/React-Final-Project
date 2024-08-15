@@ -1,53 +1,53 @@
 import { Fragment } from "react/jsx-runtime";
 import { globalUser } from "../../Providers/UserProvider";
-import { TUser, TUserMeds } from "../../types";
-import { findUserById } from "./medTabHelpers";
+import { globalMedication } from "../../Providers/MedicationProvider";
+import "./MedTable-style.css";
+import { globalUsersMeds } from "../../Providers/UsersMedsProvider";
 
-type TMedsTableProps = {
-  userMeds: TUserMeds[] | undefined;
-};
+const MedsTable = () => {
+  const { findUserById, currentUser } = globalUser();
+  const { findMedById, concatMedAtr } = globalMedication();
+  const { allUsersMedications } = globalUsersMeds();
 
-const MedsTable = ({ userMeds }: TMedsTableProps) => {
-  const { allUsers } = globalUser();
-  let usersFound: TUser[] = [];
-  const getUserName = (userId: string) => {
-    const { userName, usersAlreadyFound } = findUserById(
-      userId,
-      usersFound,
-      allUsers
-    );
-    usersFound = usersAlreadyFound;
-    return userName;
-  };
-  if (userMeds) {
+  if (allUsersMedications) {
     return (
       <>
-        <table>
-          <caption>Medications</caption>
-          <thead>
-            <tr>
-              <th>Patient</th>
-              <th>Medication</th>
-              <th>Directions</th>
-              <th>Prescriber</th>
-              <th>status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {userMeds.map((userMed, index) => {
-              console.log(userMed);
-
-              return (
-                <Fragment key={userMed.id}>
-                  <tr className={index % 2 === 0 ? "color-row" : ""}>
-                    <td>{getUserName(userMed.userId)}</td>
-                    <td></td>
-                  </tr>
-                </Fragment>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="user-med-table-wrapper">
+          <table className="user-med-table">
+            <caption>My Medications</caption>
+            <thead>
+              <tr>
+                <th className="th-patient">Patient</th>
+                <th className="th-medication">Medication</th>
+                <th className="th-directions">Directions</th>
+                <th className="th-prescriber">Prescriber</th>
+                <th className="th-status">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {allUsersMedications.map((userMed, index) => {
+                const user = findUserById(userMed.userId);
+                const med = findMedById(userMed.medId);
+                if (currentUser.id === user?.id)
+                  return (
+                    <Fragment key={userMed.id}>
+                      <tr className={index % 2 === 0 ? "color-row" : ""}>
+                        <td>
+                          {user
+                            ? `${user.firstName} ${user.lastName}`
+                            : "unknown user"}
+                        </td>
+                        <td>{concatMedAtr(med)}</td>
+                        <td>{userMed.directions}</td>
+                        <td>{userMed.prescriber}</td>
+                        <td>{userMed.status}</td>
+                      </tr>
+                    </Fragment>
+                  );
+              })}
+            </tbody>
+          </table>
+        </div>
       </>
     );
   }

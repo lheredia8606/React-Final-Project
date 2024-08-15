@@ -1,17 +1,21 @@
-import { globalMedication } from "../../../../Providers/MedicationProvider";
-import { globalUser } from "../../../../Providers/UserProvider";
-import { globalUsersMeds } from "../../../../Providers/UsersMedsProvider";
+import { Link } from "react-router-dom";
 import MedsTable from "../../../MedsTable.tsx/MedsTable";
+import "./patient-page-style.css";
 
 export const PatientPage = () => {
-  const { currentUser } = globalUser();
-  const { allFetchedMeds } = globalMedication();
-  const { allUsersMedications } = globalUsersMeds();
-  console.log(allUsersMedications);
-
   return (
     <>
-      <MedsTable userMeds={allUsersMedications} />
+      <div className="patient-wrapper">
+        <div className="patient-sideBar">
+          <Link to="" className="nav-bar-link">
+            My Medications
+          </Link>
+          <Link to="" className="nav-bar-link">
+            My Profile
+          </Link>
+        </div>
+        <MedsTable />
+      </div>
     </>
   );
 };

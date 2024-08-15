@@ -9,6 +9,14 @@
       "userLevel": 0
     },
     {
+      "id": "patient2",
+      "userName": "Patient2",
+      "password": "8606",
+      "firstName": "Patient2",
+      "lastName": "Doe",
+      "userLevel": 1
+    },
+    {
       "id": "patient",
       "userName": "Patient",
       "password": "8606",
@@ -46,8 +54,24 @@
       "id": "23asd",
       "name": "Enalapril",
       "dosageForm": "Tablet",
-      "strength": "string",
-      "meassure": "g",
+      "strength": "20",
+      "meassure": "mg",
+      "equivalents": []
+    },
+    {
+      "id": "df3455sd",
+      "name": "Ibuprofen",
+      "dosageForm": "Tablet",
+      "strength": "800",
+      "meassure": "mg",
+      "equivalents": []
+    },
+    {
+      "id": "kl2345er",
+      "name": "Levothyroxine",
+      "dosageForm": "Tablet",
+      "strength": "100",
+      "meassure": "mcg",
       "equivalents": []
     }
   ],
@@ -57,7 +81,32 @@
       "userId": "patient",
       "medId": "23asd",
       "status": "Current",
-      "directions": "1T PO QD"
+      "directions": "1T PO QD",
+      "prescriber": "Yanet Doe"
+    },
+    {
+      "id": "234erth53",
+      "userId": "patient",
+      "medId": "df3455sd",
+      "status": "Current",
+      "directions": "1T PO BID PRN",
+      "prescriber": "Yanet Doe"
+    },
+    {
+      "id": "375lkf54",
+      "userId": "patient",
+      "medId": "kl2345er",
+      "status": "Current",
+      "directions": "1T PO QD AM",
+      "prescriber": "Yanet Doe"
+    },
+    {
+      "id": "325erf54",
+      "userId": "patient2",
+      "medId": "kl2345er",
+      "status": "Current",
+      "directions": "1T PO QD AM",
+      "prescriber": "Yanet Doe"
     }
   ]
 }

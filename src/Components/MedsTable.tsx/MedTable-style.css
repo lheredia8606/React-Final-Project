@@ -1,0 +1,46 @@
+.user-med-table-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.user-med-table {
+  border-collapse: collapse;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.user-med-table,
+.user-med-table td,
+.user-med-table th {
+  padding: 1px 3px;
+  margin: 0;
+  border: 1px solid black;
+}
+.user-med-table tr {
+  background: #f6f6f6;
+}
+
+.user-med-table .color-row {
+  background: #d9d9d9;
+}
+
+.th-patient {
+  width: 15%;
+}
+
+.th-medication {
+  width: 30%;
+}
+
+.th-directions {
+  width: 25;
+}
+
+.th-prescriber {
+  width: 15%;
+}
+
+.th-status {
+  width: 10%;
+}

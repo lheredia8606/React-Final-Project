@@ -22,6 +22,7 @@ export type TUserMeds = {
   medId: string;
   status: "Current" | "Discontinued";
   directions: string;
+  prescriber: string;
 };
 
 export const guestUser: TUser = {

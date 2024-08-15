@@ -10,10 +10,8 @@ export const Login = () => {
   const [passwordInput, setPasswordInput] = useState("");
   const onSubmit = () => {
     const userData = autenticateUser(userNameInput, passwordInput);
-    console.log(userData);
 
     if (userData) {
-      console.log(`/userpage/${userData.id}`);
       navigate(`/userpage/${userData.id}`);
     } else {
       console.log("user not found");
@@ -49,7 +47,9 @@ export const Login = () => {
             onChange={(e) => setPasswordInput(e.target.value)}
           />
           <div>
-            <button>Cancel</button>
+            <button onClick={() => navigate(`/userpage/${currentUser.id}`)}>
+              Cancel
+            </button>
             <button onClick={onSubmit}>Sign in</button>
           </div>
         </div>
