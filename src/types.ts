@@ -5,6 +5,7 @@ export type TUser = {
   firstName: string;
   lastName: string;
   userLevel: 0 | 1 | 2 | 3 | 4;
+  address: string;
 };
 
 export type TMedication = {
@@ -32,4 +33,5 @@ export const guestUser: TUser = {
   firstName: "Guest",
   lastName: "Doe",
   userLevel: 0,
+  address: "",
 };

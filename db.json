@@ -6,7 +6,8 @@
       "password": "",
       "firstName": "Guest",
       "lastName": "Doe",
-      "userLevel": 0
+      "userLevel": 0,
+      "address": ""
     },
     {
       "id": "patient2",
@@ -14,7 +15,8 @@
       "password": "8606",
       "firstName": "Patient2",
       "lastName": "Doe",
-      "userLevel": 1
+      "userLevel": 1,
+      "address": ""
     },
     {
       "id": "patient",
@@ -22,7 +24,8 @@
       "password": "8606",
       "firstName": "Patient",
       "lastName": "Doe",
-      "userLevel": 1
+      "userLevel": 1,
+      "address": ""
     },
     {
       "id": "pharmacist",
@@ -30,7 +33,8 @@
       "password": "8606",
       "firstName": "Pharmacist",
       "lastName": "Doe",
-      "userLevel": 2
+      "userLevel": 2,
+      "address": ""
     },
     {
       "id": "provider",
@@ -38,7 +42,8 @@
       "password": "8606",
       "firstName": "Provider",
       "lastName": "Doe",
-      "userLevel": 3
+      "userLevel": 3,
+      "address": ""
     },
     {
       "id": "admin",
@@ -46,7 +51,8 @@
       "password": "8606",
       "firstName": "Admin",
       "lastName": "Doe",
-      "userLevel": 4
+      "userLevel": 4,
+      "address": ""
     }
   ],
   "medications": [

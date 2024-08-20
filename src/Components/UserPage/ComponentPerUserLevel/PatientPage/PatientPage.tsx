@@ -1,20 +1,27 @@
-import { Link } from "react-router-dom";
-import MedsTable from "../../../MedsTable.tsx/MedsTable";
+import { Link, Outlet } from "react-router-dom";
 import "./patient-page-style.css";
+import { globalUser } from "../../../../Providers/UserProvider";
 
 export const PatientPage = () => {
+  const { currentUser } = globalUser();
   return (
     <>
       <div className="patient-wrapper">
         <div className="patient-sideBar">
-          <Link to="" className="nav-bar-link">
+          <Link
+            to={`/userPage/${currentUser.id}/myMeds`}
+            className="nav-bar-link"
+          >
             My Medications
           </Link>
-          <Link to="" className="nav-bar-link">
+          <Link
+            to={`/userPage/${currentUser.id}/myProfile`}
+            className="nav-bar-link"
+          >
             My Profile
           </Link>
         </div>
-        <MedsTable />
+        <Outlet />
       </div>
     </>
   );
