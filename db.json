@@ -7,7 +7,12 @@
       "firstName": "Guest",
       "lastName": "Doe",
       "userLevel": 0,
-      "address": ""
+      "address": "",
+      "dob": {
+        "month": "01",
+        "day": "25",
+        "year": "1952"
+      }
     },
     {
       "id": "patient2",
@@ -16,7 +21,12 @@
       "firstName": "Patient2",
       "lastName": "Doe",
       "userLevel": 1,
-      "address": ""
+      "address": "",
+      "dob": {
+        "month": "04",
+        "day": "05",
+        "year": "1967"
+      }
     },
     {
       "id": "patient",
@@ -25,7 +35,12 @@
       "firstName": "Patient",
       "lastName": "Doe",
       "userLevel": 1,
-      "address": ""
+      "address": "",
+      "dob": {
+        "month": "12",
+        "day": "31",
+        "year": "1952"
+      }
     },
     {
       "id": "pharmacist",
@@ -34,7 +49,12 @@
       "firstName": "Pharmacist",
       "lastName": "Doe",
       "userLevel": 2,
-      "address": ""
+      "address": "",
+      "dob": {
+        "month": "09",
+        "day": "18",
+        "year": "1952"
+      }
     },
     {
       "id": "provider",
@@ -43,7 +63,12 @@
       "firstName": "Provider",
       "lastName": "Doe",
       "userLevel": 3,
-      "address": ""
+      "address": "",
+      "dob": {
+        "month": "02",
+        "day": "25",
+        "year": "1985"
+      }
     },
     {
       "id": "admin",
@@ -52,7 +77,12 @@
       "firstName": "Admin",
       "lastName": "Doe",
       "userLevel": 4,
-      "address": ""
+      "address": "",
+      "dob": {
+        "month": "08",
+        "day": "04",
+        "year": "2002"
+      }
     }
   ],
   "medications": [
@@ -61,24 +91,21 @@
       "name": "Enalapril",
       "dosageForm": "Tablet",
       "strength": "20",
-      "meassure": "mg",
-      "equivalents": []
+      "meassure": "mg"
     },
     {
       "id": "df3455sd",
       "name": "Ibuprofen",
       "dosageForm": "Tablet",
       "strength": "800",
-      "meassure": "mg",
-      "equivalents": []
+      "meassure": "mg"
     },
     {
       "id": "kl2345er",
       "name": "Levothyroxine",
       "dosageForm": "Tablet",
       "strength": "100",
-      "meassure": "mcg",
-      "equivalents": []
+      "meassure": "mcg"
     }
   ],
   "userMeds": [
@@ -111,6 +138,14 @@
       "userId": "patient2",
       "medId": "kl2345er",
       "status": "Current",
+      "directions": "1T PO QD AM",
+      "prescriber": "Yanet Doe"
+    },
+    {
+      "id": "325erf54",
+      "userId": "admin",
+      "medId": "kl2345er",
+      "status": "Discontinued",
       "directions": "1T PO QD AM",
       "prescriber": "Yanet Doe"
     }

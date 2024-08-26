@@ -1,12 +1,12 @@
-.patient-wrapper {
+.admin-wrapper {
   width: 100%;
   height: 100%;
   display: flex;
 }
 
-.patient-sideBar {
+.admin-sideBar {
   background-color: #d9d9d9;
-  min-width: 20%;
+  min-width: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;

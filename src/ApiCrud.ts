@@ -13,6 +13,10 @@ type TPaginatedJsonResponse<T> = {
 export class ApiCrud<T> {
   constructor(private url: string) {}
 
+  getUrl() {
+    return this.url;
+  }
+
   getAll() {
     return axios.get<T[]>(this.url);
   }
@@ -27,7 +31,8 @@ export class ApiCrud<T> {
     return axios.get<T>(`${this.url}/${id}`);
   }
 
-  create(data: T) {
+  create(data: Omit<T, "id">) {
+    console.log("the url is: " + this.url);
     return axios.post<T>(this.url, data);
   }
 

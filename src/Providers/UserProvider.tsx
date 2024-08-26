@@ -1,7 +1,8 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { guestUser, TUser } from "../types";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { ApiCrud } from "../ApiCrud";
+import { AxiosResponse } from "axios";
 
 type TUserProviderProps = {
   currentUser: TUser;
@@ -9,6 +10,7 @@ type TUserProviderProps = {
   signOut: () => void;
   findUserById: (userIdToFind: string) => TUser | undefined;
   allUsers: TUser[] | undefined;
+  createNewUser: (user: Omit<TUser, "id">) => void;
 };
 
 const usersCRUD = new ApiCrud<TUser>("http://localhost:3000/users");
@@ -18,13 +20,32 @@ const userContext = createContext({} as TUserProviderProps);
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<TUser>(guestUser);
 
-  const { data: allUsers, isLoading } = useQuery(
-    "fetch-users",
-    () => usersCRUD.getAll(),
-    {
-      select: (response) => response.data,
-    }
-  );
+  const {
+    data: allUsers,
+    refetch: refetchAllUsers,
+    isLoading: getAllUsersIsLoading,
+  } = useQuery("fetch-users", () => usersCRUD.getAll(), {
+    select: (response) => response.data,
+  });
+
+  const addUserMutation = (onSuccces: () => void) => {
+    console.log("url in mutation: " + usersCRUD.getUrl());
+
+    return useMutation<AxiosResponse<TUser>, Error, Omit<TUser, "id">>(
+      usersCRUD.create,
+      {
+        onSuccess: () => onSuccces(),
+      }
+    );
+  };
+
+  const { mutate: createUser } = addUserMutation(refetchAllUsers);
+  console.log("the url is: " + usersCRUD.getUrl());
+
+  const createNewUser = (user: Omit<TUser, "id">) => {
+    console.log("the url is: " + usersCRUD.getUrl());
+    createUser(user);
+  };
 
   const signIn = (userName: string, password: string) => {
     return allUsers?.find((user) => {
@@ -56,7 +77,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     return foundUser;
   };
 
-  if (isLoading) {
+  if (getAllUsersIsLoading) {
     return (
       <>
         <span>Loading</span>
@@ -73,6 +94,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
           signOut,
           allUsers,
           findUserById,
+          createNewUser: createNewUser,
         }}
       >
         {children}
