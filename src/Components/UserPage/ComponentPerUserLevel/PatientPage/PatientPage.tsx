@@ -1,9 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
 import "./patient-page-style.css";
-import { globalUser } from "../../../../Providers/UserProvider";
+import { useUsers } from "../../../ToErase/useUsers";
 
 export const PatientPage = () => {
-  const { currentUser } = globalUser();
+  const { currentUser } = useUsers();
   return (
     <>
       <div className="patient-wrapper">

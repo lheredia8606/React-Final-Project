@@ -1,8 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
-import { globalUser } from "../../../../Providers/UserProvider";
 import "./admin-page-style.css";
+import { useUsers } from "../../../ToErase/useUsers";
 export const AdminPage = () => {
-  const { currentUser } = globalUser();
+  const { currentUser } = useUsers();
   return (
     <>
       <div className="admin-wrapper">

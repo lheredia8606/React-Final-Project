@@ -2,14 +2,14 @@ import { useState } from "react";
 import { TUser } from "../../../types";
 import "./user-profile-style.css";
 import { DatePicker } from "./DatePicker/DatePicker";
-import { globalUser } from "../../../Providers/UserProvider";
+import { useUsers } from "../../ToErase/useUsers";
 
 export const UserProfile = ({
   userProfile,
 }: {
   userProfile: Partial<TUser>;
 }) => {
-  const { createNewUser } = globalUser();
+  const { createUserMutation } = useUsers();
 
   const getTheUser = () => {
     const theUser: TUser = {
@@ -28,7 +28,7 @@ export const UserProfile = ({
     return theUser;
   };
   const onCreate = (theUser: TUser) => {
-    createNewUser(theUser);
+    createUserMutation.mutate(theUser);
   };
 
   const onUpdate = (theUser: TUser) => {
@@ -127,21 +127,8 @@ export const UserProfile = ({
         <div className="div-wrapper controls">
           <button
             onClick={() => {
-              const theUser: TUser = {
-                firstName: firstNameInput,
-                lastName: lastNameInput,
-                userName: usernameInput,
-                password: passwordInput,
-                address: addressInput,
-                userLevel: userLevelInput,
-                dob: {
-                  month: monthInput,
-                  day: dayInput,
-                  year: yearInput,
-                },
-              };
-              if (userProfile.id) onUpdate(theUser);
-              else onCreate(theUser);
+              if (userProfile.id) onUpdate(getTheUser());
+              else onCreate(getTheUser());
             }}
           >
             {userProfile.id ? "Update" : "Create"}

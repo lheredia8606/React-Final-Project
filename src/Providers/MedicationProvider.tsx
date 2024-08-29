@@ -48,4 +48,4 @@ export const MedicationProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const globalMedication = () => useContext(medicationContext);
+export const useGlobalMedication = () => useContext(medicationContext);

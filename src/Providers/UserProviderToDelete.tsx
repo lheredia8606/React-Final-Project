@@ -13,11 +13,10 @@ type TUserProviderProps = {
   createNewUser: (user: Omit<TUser, "id">) => void;
 };
 
-const usersCRUD = new ApiCrud<TUser>("http://localhost:3000/users");
-
 const userContext = createContext({} as TUserProviderProps);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
+  const usersCRUD = new ApiCrud<TUser>("http://localhost:3000/users");
   const [currentUser, setCurrentUser] = useState<TUser>(guestUser);
 
   const {
@@ -29,8 +28,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   });
 
   const addUserMutation = (onSuccces: () => void) => {
-    console.log("url in mutation: " + usersCRUD.getUrl());
-
     return useMutation<AxiosResponse<TUser>, Error, Omit<TUser, "id">>(
       usersCRUD.create,
       {
@@ -40,10 +37,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const { mutate: createUser } = addUserMutation(refetchAllUsers);
-  console.log("the url is: " + usersCRUD.getUrl());
 
   const createNewUser = (user: Omit<TUser, "id">) => {
-    console.log("the url is: " + usersCRUD.getUrl());
     createUser(user);
   };
 
@@ -103,4 +98,4 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const globalUser = () => useContext(userContext);
+export const useGlobalUser = () => useContext(userContext);

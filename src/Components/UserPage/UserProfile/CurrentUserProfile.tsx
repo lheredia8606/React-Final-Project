@@ -1,8 +1,8 @@
-import { globalUser } from "../../../Providers/UserProvider";
+import { useUsers } from "../../ToErase/useUsers";
 import { UserProfile } from "./UserProfile";
 
 export const CurrentUserProfile = () => {
-  const { currentUser } = globalUser();
+  const { currentUser } = useUsers();
   return (
     <>
       <UserProfile userProfile={currentUser} />

@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { globalUser } from "../../Providers/UserProvider";
 import "./login-style.css";
 import { useEffect, useRef, useState } from "react";
+import { useUsers } from "../ToErase/useUsers";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const { signIn: autenticateUser, currentUser } = globalUser();
+  const { signIn: autenticateUser, currentUser } = useUsers();
   const [userNameInput, setUserNameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const onSubmit = () => {

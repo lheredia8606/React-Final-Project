@@ -24,4 +24,4 @@ export const UsersMedsProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const globalUsersMeds = () => useContext(userMedsContext);
+export const useGlobalUsersMeds = () => useContext(userMedsContext);

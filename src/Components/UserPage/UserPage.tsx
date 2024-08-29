@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
-import { globalUser } from "../../Providers/UserProvider";
 import { Welcome } from "../Welcome";
 import { AdminPage } from "./ComponentPerUserLevel/AdminPage/AdminPage";
 import { PatientPage } from "./ComponentPerUserLevel/PatientPage/PatientPage";
 import { PharmacistPage } from "./ComponentPerUserLevel/PharmacistPage/PharmacistPage";
 import { ProviderPage } from "./ComponentPerUserLevel/ProviderPage/ProviderPage";
+import { useUsers } from "../ToErase/useUsers";
 
 export const UserPage = () => {
   const { id } = useParams();
-  const { currentUser } = globalUser();
+  const { currentUser } = useUsers();
   if (id !== currentUser.id)
     return (
       <>

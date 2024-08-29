@@ -1,10 +1,8 @@
-import { globalUser } from "../../Providers/UserProvider";
-import { UserPage } from "../UserPage/UserPage";
-import { Welcome } from "../Welcome";
+import { useUsers } from "../ToErase/useUsers";
 import "./home-style.css";
 import { Link, Outlet } from "react-router-dom";
 export const Home = () => {
-  const { currentUser, signOut } = globalUser();
+  const { currentUser, signOut } = useUsers();
   return (
     <>
       <header>

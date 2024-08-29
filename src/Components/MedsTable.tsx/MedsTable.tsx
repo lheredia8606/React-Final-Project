@@ -1,13 +1,13 @@
 import { Fragment } from "react/jsx-runtime";
-import { globalUser } from "../../Providers/UserProvider";
-import { globalMedication } from "../../Providers/MedicationProvider";
+import { useGlobalMedication } from "../../Providers/MedicationProvider";
 import "./MedTable-style.css";
-import { globalUsersMeds } from "../../Providers/UsersMedsProvider";
+import { useGlobalUsersMeds } from "../../Providers/UsersMedsProvider";
+import { useUsers } from "../ToErase/useUsers";
 
 const MedsTable = () => {
-  const { findUserById, currentUser } = globalUser();
-  const { findMedById, concatMedAtr } = globalMedication();
-  const { allUsersMedications } = globalUsersMeds();
+  const { findUserById, currentUser } = useUsers();
+  const { findMedById, concatMedAtr } = useGlobalMedication();
+  const { allUsersMedications } = useGlobalUsersMeds();
 
   if (allUsersMedications) {
     return (
