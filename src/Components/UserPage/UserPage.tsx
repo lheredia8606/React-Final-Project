@@ -4,11 +4,11 @@ import { AdminPage } from "./ComponentPerUserLevel/AdminPage/AdminPage";
 import { PatientPage } from "./ComponentPerUserLevel/PatientPage/PatientPage";
 import { PharmacistPage } from "./ComponentPerUserLevel/PharmacistPage/PharmacistPage";
 import { ProviderPage } from "./ComponentPerUserLevel/ProviderPage/ProviderPage";
-import { useUsers } from "../ToErase/useUsers";
+import { useGlobalUser } from "../../Providers/userProvider/UserProvider";
 
 export const UserPage = () => {
   const { id } = useParams();
-  const { currentUser } = useUsers();
+  const { currentUser } = useGlobalUser();
   if (id !== currentUser.id)
     return (
       <>

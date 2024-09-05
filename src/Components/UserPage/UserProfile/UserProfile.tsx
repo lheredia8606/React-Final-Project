@@ -1,18 +1,24 @@
 import { useState } from "react";
-import { TUser } from "../../../types";
+import { TUser } from "../../../TypesAndHelpers/types";
 import "./user-profile-style.css";
 import { DatePicker } from "./DatePicker/DatePicker";
-import { useUsers } from "../../ToErase/useUsers";
+import { useGlobalUser } from "../../../Providers/userProvider/UserProvider";
 
 export const UserProfile = ({
   userProfile,
 }: {
   userProfile: Partial<TUser>;
 }) => {
-  const { createUserMutation } = useUsers();
+  const {
+    createUserMutation,
+    userPatchMutation,
+    currentUser,
+    handleSetCurrentUser,
+  } = useGlobalUser();
 
-  const getTheUser = () => {
-    const theUser: TUser = {
+  const getTheNewUser = () => {
+    const theNewUser: Partial<TUser> = {
+      id: userProfile.id,
       userName: usernameInput,
       password: passwordInput,
       address: addressInput,
@@ -25,14 +31,18 @@ export const UserProfile = ({
       lastName: lastNameInput,
       userLevel: userLevelInput,
     };
-    return theUser;
+    return theNewUser;
   };
-  const onCreate = (theUser: TUser) => {
+  const onCreate = (theUser: Partial<TUser>) => {
     createUserMutation.mutate(theUser);
   };
 
-  const onUpdate = (theUser: TUser) => {
+  const onUpdate = (theUser: Partial<TUser>) => {
     console.log("updating the user");
+    userPatchMutation.mutate(theUser);
+    if (currentUser.id === theUser.id) {
+      handleSetCurrentUser(theUser as TUser);
+    }
   };
 
   const [usernameInput, sertUsernameInput] = useState(
@@ -110,6 +120,7 @@ export const UserProfile = ({
         <div className="div-wrapper">
           <label>User Level</label>
           <select
+            disabled={currentUser.userLevel !== 4}
             id="select-user-level"
             name="options"
             value={userLevelInput}
@@ -125,14 +136,17 @@ export const UserProfile = ({
           </select>
         </div>
         <div className="div-wrapper controls">
-          <button
-            onClick={() => {
-              if (userProfile.id) onUpdate(getTheUser());
-              else onCreate(getTheUser());
-            }}
-          >
-            {userProfile.id ? "Update" : "Create"}
-          </button>
+          {userProfile.id ? (
+            <button
+              onClick={() => {
+                onUpdate(getTheNewUser());
+              }}
+            >
+              Update
+            </button>
+          ) : (
+            <button>Create</button>
+          )}
         </div>
       </div>
     </>

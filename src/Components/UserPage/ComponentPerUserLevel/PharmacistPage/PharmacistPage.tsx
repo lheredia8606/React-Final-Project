@@ -1,7 +1,27 @@
+import { useState } from "react";
+import { SelectPatient } from "./SelectPatient/SelectPatient";
+import { TUser } from "../../../../TypesAndHelpers/types";
+
 export const PharmacistPage = () => {
+  const [selectedPatient, setSelectedPatient] = useState<TUser | undefined>(
+    undefined
+  );
   return (
     <>
-      <h1>PharmacistPage</h1>
+      {!selectedPatient ? (
+        <SelectPatient setSelectedPatient={setSelectedPatient} />
+      ) : (
+        <>
+          <label>{selectedPatient.firstName}</label>
+        </>
+      )}
+      <button
+        onClick={() => {
+          setSelectedPatient(undefined);
+        }}
+      >
+        Back
+      </button>
     </>
   );
 };

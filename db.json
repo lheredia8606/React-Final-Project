@@ -6,7 +6,7 @@
       "password": "",
       "firstName": "Guest",
       "lastName": "Doe",
-      "userLevel": 0,
+      "userLevel": "0",
       "address": "",
       "dob": {
         "month": "01",
@@ -20,7 +20,7 @@
       "password": "8606",
       "firstName": "Patient2",
       "lastName": "Doe",
-      "userLevel": 1,
+      "userLevel": "1",
       "address": "",
       "dob": {
         "month": "04",
@@ -34,12 +34,12 @@
       "password": "8606",
       "firstName": "Patient",
       "lastName": "Doe",
-      "userLevel": 1,
-      "address": "",
+      "userLevel": "1",
+      "address": "holguin",
       "dob": {
-        "month": "12",
-        "day": "31",
-        "year": "1952"
+        "day": "22",
+        "month": "22",
+        "year": "2222"
       }
     },
     {
@@ -48,7 +48,7 @@
       "password": "8606",
       "firstName": "Pharmacist",
       "lastName": "Doe",
-      "userLevel": 2,
+      "userLevel": "2",
       "address": "",
       "dob": {
         "month": "09",
@@ -62,7 +62,7 @@
       "password": "8606",
       "firstName": "Provider",
       "lastName": "Doe",
-      "userLevel": 3,
+      "userLevel": "3",
       "address": "",
       "dob": {
         "month": "02",
@@ -76,7 +76,7 @@
       "password": "8606",
       "firstName": "Admin",
       "lastName": "Doe",
-      "userLevel": 4,
+      "userLevel": "4",
       "address": "",
       "dob": {
         "month": "08",
@@ -95,7 +95,7 @@
       "firstName": "12",
       "lastName": "",
       "password": "",
-      "userLevel": 1,
+      "userLevel": "1",
       "userName": "asd"
     },
     {
@@ -109,7 +109,7 @@
       "firstName": "12",
       "lastName": "",
       "password": "",
-      "userLevel": 1,
+      "userLevel": "1",
       "userName": "asd"
     },
     {
@@ -123,7 +123,7 @@
       "firstName": "12",
       "lastName": "",
       "password": "",
-      "userLevel": 1,
+      "userLevel": "1",
       "userName": "asd"
     },
     {
@@ -137,107 +137,10 @@
       "firstName": "12",
       "lastName": "",
       "password": "",
-      "userLevel": 1,
+      "userLevel": "1",
       "userName": "asd"
     },
-    {
-      "id": "3162",
-      "address": "",
-      "dob": {
-        "day": "01",
-        "month": "01",
-        "year": "2002"
-      },
-      "firstName": "12",
-      "lastName": "",
-      "password": "",
-      "userLevel": 1,
-      "userName": "asd"
-    },
-    {
-      "id": "06c7",
-      "address": "",
-      "dob": {
-        "day": "01",
-        "month": "01",
-        "year": "2002"
-      },
-      "firstName": "12",
-      "lastName": "",
-      "password": "",
-      "userLevel": 1,
-      "userName": "asd"
-    },
-    {
-      "id": "d1a6",
-      "address": "",
-      "dob": {
-        "day": "01",
-        "month": "01",
-        "year": "2002"
-      },
-      "firstName": "12",
-      "lastName": "",
-      "password": "",
-      "userLevel": 1,
-      "userName": "asd"
-    },
-    {
-      "id": "f632",
-      "address": "",
-      "dob": {
-        "day": "01",
-        "month": "01",
-        "year": "2002"
-      },
-      "firstName": "12",
-      "lastName": "",
-      "password": "",
-      "userLevel": 1,
-      "userName": "asd"
-    },
-    {
-      "id": "727a",
-      "address": "",
-      "dob": {
-        "day": "01",
-        "month": "01",
-        "year": "2002"
-      },
-      "firstName": "12",
-      "lastName": "",
-      "password": "",
-      "userLevel": 1,
-      "userName": "asd"
-    },
-    {
-      "id": "a2ad",
-      "userName": "dfg",
-      "password": "dfg",
-      "address": "dfg",
-      "dob": {
-        "day": "22",
-        "month": "22",
-        "year": "222"
-      },
-      "firstName": "dfg",
-      "lastName": "dfg",
-      "userLevel": "2"
-    },
-    {
-      "id": "b816",
-      "userName": "dfg",
-      "password": "dfg",
-      "address": "dfg",
-      "dob": {
-        "day": "13",
-        "month": "06",
-        "year": "1986"
-      },
-      "firstName": "dfg",
-      "lastName": "dfg",
-      "userLevel": "2"
-    },
+
     {
       "id": "88f2",
       "userName": "totono",
@@ -248,9 +151,9 @@
         "month": "06",
         "year": "1986"
       },
-      "firstName": "Leandro",
+      "firstName": "Leandro1",
       "lastName": "Heredia",
-      "userLevel": "4"
+      "userLevel": "1"
     },
     {
       "id": "5cdc",
@@ -262,9 +165,23 @@
         "month": "06",
         "year": "1986"
       },
-      "firstName": "Leandro",
+      "firstName": "Leandro2",
       "lastName": "Heredia",
-      "userLevel": "4"
+      "userLevel": "1"
+    },
+    {
+      "id": "fee8",
+      "userName": "asdadad",
+      "password": "asdasdasd",
+      "address": "asdasda",
+      "dob": {
+        "day": "99",
+        "month": "99",
+        "year": "9999"
+      },
+      "firstName": "yandy",
+      "lastName": "campana",
+      "userLevel": "1"
     }
   ],
   "medications": [
@@ -319,7 +236,7 @@
       "id": "325erf54",
       "userId": "patient2",
       "medId": "kl2345er",
-      "status": "Current",
+      "status": "Discontinued",
       "directions": "1T PO QD AM",
       "prescriber": "Yanet Doe"
     },

@@ -1,35 +1,28 @@
 import { createContext, ReactNode, useContext } from "react";
-import { TMedication } from "../types";
-import { ApiCrud } from "../ApiCrud";
-import { useQuery } from "react-query";
+import { TMedication } from "../TypesAndHelpers/types";
+import { useQuery, UseQueryResult } from "react-query";
+import { getAllItems } from "../TypesAndHelpers/apiHelpers";
 
 type TMedicationProviderProps = {
-  allFetchedMeds: TMedication[] | undefined;
+  getAllMedicationQuery: UseQueryResult<TMedication[], unknown>;
   findMedById: (medId: string) => TMedication | undefined;
   concatMedAtr: (med: TMedication | undefined) => string;
 };
 
-const medicationCRUD = new ApiCrud<TMedication>(
-  "http://localhost:3000/medications"
-);
+const url = "http://localhost:3000/medications";
 
 const medicationContext = createContext({} as TMedicationProviderProps);
 
 export const MedicationProvider = ({ children }: { children: ReactNode }) => {
-  const { data: allFetchedMeds } = useQuery(
-    "fetch-meds",
-    () => medicationCRUD.getAll(),
-    {
-      select: (response) => {
-        if (response.data) {
-          return response.data;
-        }
-        return [];
-      },
-    }
-  );
+  const getAllMedicationQuery = useQuery({
+    queryFn: () => getAllItems<TMedication>(url),
+    queryKey: "getAllMedications",
+  });
+
   const findMedById = (medId: string) => {
-    return allFetchedMeds?.find((medication) => medication.id === medId);
+    return getAllMedicationQuery.data?.find(
+      (medication) => medication.id === medId
+    );
   };
 
   const concatMedAtr = (med: TMedication | undefined) => {
@@ -40,7 +33,7 @@ export const MedicationProvider = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <medicationContext.Provider
-        value={{ allFetchedMeds, findMedById, concatMedAtr }}
+        value={{ getAllMedicationQuery, findMedById, concatMedAtr }}
       >
         {children}
       </medicationContext.Provider>

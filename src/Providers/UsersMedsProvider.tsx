@@ -1,24 +1,40 @@
 import { createContext, ReactNode, useContext } from "react";
-import { TUserMeds } from "../types";
-import { ApiCrud } from "../ApiCrud";
-import { useQuery } from "react-query";
+import { TUserMeds } from "../TypesAndHelpers/types";
+import {
+  useMutation,
+  UseMutationResult,
+  useQuery,
+  UseQueryResult,
+} from "react-query";
+import { getAllItems, patchItem } from "../TypesAndHelpers/apiHelpers";
+import { queryClient } from "../main";
 
 type TUsersMedsProviderProps = {
-  allUsersMedications: TUserMeds[] | undefined;
+  allUserMedications: UseQueryResult<TUserMeds[], unknown>;
+  patchUserMedMutation: UseMutationResult<
+    TUserMeds,
+    unknown,
+    Partial<TUserMeds>,
+    unknown
+  >;
 };
-const userMedsCRUD = new ApiCrud<TUserMeds>("http://localhost:3000/userMeds");
+const endPoint = "http://localhost:3000/userMeds";
 const userMedsContext = createContext({} as TUsersMedsProviderProps);
 
 export const UsersMedsProvider = ({ children }: { children: ReactNode }) => {
-  const { data: allUsersMedications } = useQuery(
-    "fetch-users-meds",
-    () => userMedsCRUD.getAll(),
-    {
-      select: (response) => response.data,
-    }
-  );
+  const allUserMedications = useQuery({
+    queryKey: "fetch-users-meds",
+    queryFn: () => getAllItems<TUserMeds>(endPoint),
+  });
+
+  const patchUserMedMutation = useMutation({
+    mutationFn: (userMed: Partial<TUserMeds>) => patchItem(endPoint, userMed),
+    onSuccess: () => queryClient.invalidateQueries("fetch-users-meds"),
+  });
   return (
-    <userMedsContext.Provider value={{ allUsersMedications }}>
+    <userMedsContext.Provider
+      value={{ allUserMedications, patchUserMedMutation }}
+    >
       {children}
     </userMedsContext.Provider>
   );

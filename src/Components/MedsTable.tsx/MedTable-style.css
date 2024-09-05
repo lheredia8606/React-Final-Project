@@ -9,6 +9,9 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   width: 100%;
 }
+.user-med-table td {
+  white-space: nowrap;
+}
 
 .user-med-table,
 .user-med-table td,
@@ -43,4 +46,21 @@
 
 .th-status {
   width: 10%;
+}
+
+.flex-centered {
+  display: flex;
+  justify-content: center;
+}
+
+.status-check,
+.status-cross {
+  font-size: 1.2em;
+}
+
+.status-check {
+  color: green;
+}
+.status-cross {
+  color: red;
 }

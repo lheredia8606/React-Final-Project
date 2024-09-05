@@ -1,12 +1,12 @@
 import { ComponentProps } from "react";
 
 export type TUser = {
-  id?: string;
+  id: string;
   userName: string;
   password: string;
   firstName: string;
   lastName: string;
-  userLevel: 0 | 1 | 2 | 3 | 4;
+  userLevel: "0" | "1" | "2" | "3" | "4";
   address: string;
   dob: TCustomDate;
 };
@@ -41,7 +41,7 @@ export const guestUser: TUser = {
   password: "",
   firstName: "Guest",
   lastName: "Doe",
-  userLevel: 0,
+  userLevel: "0",
   address: "",
   dob: {
     month: "01",

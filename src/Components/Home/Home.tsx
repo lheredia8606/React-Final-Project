@@ -1,8 +1,8 @@
-import { useUsers } from "../ToErase/useUsers";
+import { useGlobalUser } from "../../Providers/userProvider/UserProvider";
 import "./home-style.css";
 import { Link, Outlet } from "react-router-dom";
 export const Home = () => {
-  const { currentUser, signOut } = useUsers();
+  const { currentUser, signOut } = useGlobalUser();
   return (
     <>
       <header>
@@ -25,7 +25,7 @@ export const Home = () => {
             ) : (
               <li>
                 <Link
-                  to={`/userpage/${currentUser.id}`}
+                  to={`/userpage/guest`}
                   className="link-button"
                   onClick={signOut}
                 >
