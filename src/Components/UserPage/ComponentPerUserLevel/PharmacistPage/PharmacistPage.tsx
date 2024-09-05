@@ -8,6 +8,7 @@ export const PharmacistPage = () => {
   );
   return (
     <>
+      <label>some stuff</label>
       {!selectedPatient ? (
         <SelectPatient setSelectedPatient={setSelectedPatient} />
       ) : (

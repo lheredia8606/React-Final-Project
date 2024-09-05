@@ -18,11 +18,11 @@ export const UserPage = () => {
 
   return (
     <>
-      {currentUser.userLevel === 0 && <Welcome />}
-      {currentUser.userLevel === 1 && <PatientPage />}
-      {currentUser.userLevel === 2 && <PharmacistPage />}
-      {currentUser.userLevel === 3 && <ProviderPage />}
-      {currentUser.userLevel === 4 && <AdminPage />}
+      {currentUser.userLevel === "0" && <Welcome />}
+      {currentUser.userLevel === "1" && <PatientPage />}
+      {currentUser.userLevel === "2" && <PharmacistPage />}
+      {currentUser.userLevel === "3" && <ProviderPage />}
+      {currentUser.userLevel === "4" && <AdminPage />}
     </>
   );
 };

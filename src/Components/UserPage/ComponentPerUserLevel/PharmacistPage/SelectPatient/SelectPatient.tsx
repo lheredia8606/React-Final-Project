@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useGlobalUser } from "../../../../../Providers/userProvider/UserProvider";
-import { TCustomDate, TUser } from "../../../../../TypesAndHelpers/types";
+import { TUser } from "../../../../../TypesAndHelpers/types";
 import { DatePicker } from "../../../UserProfile/DatePicker/DatePicker";
 import { TableOfPatients } from "./TableOfPatients";
 type TselectPatient = {
@@ -60,7 +60,10 @@ export const SelectPatient = ({ setSelectedPatient }: TselectPatient) => {
         <label style={{ color: "red" }}>No patients Found!!</label>
       )}
       {isSelecting && (
-        <TableOfPatients patients={patientsToSelect}></TableOfPatients>
+        <TableOfPatients
+          patients={patientsToSelect}
+          setSelectedPatient={setSelectedPatient}
+        ></TableOfPatients>
       )}
     </>
   );

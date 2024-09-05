@@ -3,9 +3,13 @@ import { TUser } from "../../../../../TypesAndHelpers/types";
 
 type UserTableProps = {
   patients: TUser[];
+  setSelectedPatient: React.Dispatch<React.SetStateAction<TUser | undefined>>;
 };
 
-export const TableOfPatients: React.FC<UserTableProps> = ({ patients }) => {
+export const TableOfPatients: React.FC<UserTableProps> = ({
+  patients,
+  setSelectedPatient,
+}) => {
   const [selectedUser, setSelectedUser] = useState<TUser | null>(null);
 
   const handleRowClick = (user: TUser) => {
@@ -14,7 +18,7 @@ export const TableOfPatients: React.FC<UserTableProps> = ({ patients }) => {
 
   const handleSelectClick = () => {
     if (selectedUser) {
-      console.log("Selected user:", selectedUser);
+      setSelectedPatient(selectedUser);
     } else {
       console.log("No user selected");
     }

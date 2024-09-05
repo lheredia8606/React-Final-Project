@@ -44,13 +44,10 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<TUser>(getStoredUser());
   const handleSetCurrentUser = (user: TUser | undefined) => {
     if (user) {
-      console.log(`changing currenUser`);
-      console.log(user);
       flushSync(() => {
         setCurrentUser(user);
       });
       localStorage.setItem("currentUser", JSON.stringify(user));
-      console.log("user changed");
     } else {
       localStorage.removeItem("currentUser");
       setCurrentUser(guestUser);
@@ -65,8 +62,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const createUserMutation = useMutation({
     mutationFn: (input: Partial<TUser>) => createItem(endPoint, input),
     onSuccess: () => {
-      console.log("user created");
-
       queryClient.invalidateQueries("getAllUsers");
     },
     onError: () => {
@@ -108,8 +103,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   };
   const getAllPatients = () => {
     if (getAllUsersQuery.data) {
-      console.log("all users");
-      console.log(getAllUsersQuery.data);
       return getAllUsersQuery.data?.filter((user) => {
         return user.userLevel === "1";
       });

@@ -56,7 +56,7 @@ const MedsTable = () => {
                             icon={faCheck}
                             className="status-check"
                             onClick={() => {
-                              if (currentUser.userLevel == 2)
+                              if (currentUser.userLevel == "2")
                                 patchUserMed({
                                   id: userMed.id,
                                   status: "Discontinued",

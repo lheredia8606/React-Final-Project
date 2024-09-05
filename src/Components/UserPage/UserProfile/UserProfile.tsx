@@ -58,9 +58,9 @@ export const UserProfile = ({
     userProfile.lastName || ""
   );
   const [addressInput, setAddressInput] = useState(userProfile.address || "");
-  const [userLevelInput, setUserLevelInput] = useState<0 | 1 | 2 | 3 | 4>(
-    userProfile.userLevel || 0
-  );
+  const [userLevelInput, setUserLevelInput] = useState<
+    "0" | "1" | "2" | "3" | "4"
+  >(userProfile.userLevel || "0");
   const [monthInput, setMonthInput] = useState(userProfile.dob?.month || "");
   const [dayInput, setDayInput] = useState(userProfile.dob?.day || "");
   const [yearInput, setYearInput] = useState(userProfile.dob?.year || "");
@@ -120,12 +120,14 @@ export const UserProfile = ({
         <div className="div-wrapper">
           <label>User Level</label>
           <select
-            disabled={currentUser.userLevel !== 4}
+            disabled={currentUser.userLevel !== "4"}
             id="select-user-level"
             name="options"
             value={userLevelInput}
             onChange={(e) =>
-              setUserLevelInput(e.target.value as unknown as 0 | 1 | 2 | 3 | 4)
+              setUserLevelInput(
+                e.target.value as unknown as "0" | "1" | "2" | "3" | "4"
+              )
             }
           >
             <option value={0}>Guest</option>
