@@ -16,7 +16,7 @@ export const Home = () => {
                 Home
               </Link>
             </li>
-            {currentUser.userLevel === "0" ? (
+            {currentUser.userLevel === "guest" ? (
               <li>
                 <Link to="/login" className="link-button">
                   Sign in

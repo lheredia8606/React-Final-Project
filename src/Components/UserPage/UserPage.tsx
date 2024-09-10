@@ -3,7 +3,7 @@ import { Welcome } from "../Welcome";
 import { AdminPage } from "./ComponentPerUserLevel/AdminPage/AdminPage";
 import { PatientPage } from "./ComponentPerUserLevel/PatientPage/PatientPage";
 import { PharmacistPage } from "./ComponentPerUserLevel/PharmacistPage/PharmacistPage";
-import { ProviderPage } from "./ComponentPerUserLevel/ProviderPage/ProviderPage";
+import { PrescriberPage } from "./ComponentPerUserLevel/PrescriberPage/ProviderPage";
 import { useGlobalUser } from "../../Providers/userProvider/UserProvider";
 
 export const UserPage = () => {
@@ -18,11 +18,11 @@ export const UserPage = () => {
 
   return (
     <>
-      {currentUser.userLevel === "0" && <Welcome />}
-      {currentUser.userLevel === "1" && <PatientPage />}
-      {currentUser.userLevel === "2" && <PharmacistPage />}
-      {currentUser.userLevel === "3" && <ProviderPage />}
-      {currentUser.userLevel === "4" && <AdminPage />}
+      {currentUser.userLevel === "guest" && <Welcome />}
+      {currentUser.userLevel === "patient" && <PatientPage />}
+      {currentUser.userLevel === "pharmacist" && <PharmacistPage />}
+      {currentUser.userLevel === "prescriber" && <PrescriberPage />}
+      {currentUser.userLevel === "admin" && <AdminPage />}
     </>
   );
 };

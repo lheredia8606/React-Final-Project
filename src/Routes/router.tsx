@@ -3,9 +3,9 @@ import { Home } from "../Components/Home/Home";
 import { Login } from "../Components/Login/Login";
 import { About } from "../Components/About.tsx/About";
 import { UserPage } from "../Components/UserPage/UserPage";
-import MedsTable from "../Components/MedsTable.tsx/MedsTable";
-import { CurrentUserProfile } from "../Components/UserPage/UserProfile/CurrentUserProfile";
+import MedsTable from "../Components/Tables/UserMedication/UserMedTable";
 import { UserProfile } from "../Components/UserPage/UserProfile/UserProfile";
+import { CurrentUserProfile } from "../Components/UserPage/UserProfile/CurrentUserProfile";
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "/userPage/:id/myMeds",
-            element: <MedsTable />,
+            element: <MedsTable user={null} />,
           },
           {
             path: "/userPage/:id/myProfile",

@@ -6,7 +6,7 @@ export type TUser = {
   password: string;
   firstName: string;
   lastName: string;
-  userLevel: "0" | "1" | "2" | "3" | "4";
+  userLevel: "guest" | "patient" | "pharmacist" | "prescriber" | "admin";
   address: string;
   dob: TCustomDate;
 };
@@ -41,7 +41,7 @@ export const guestUser: TUser = {
   password: "",
   firstName: "Guest",
   lastName: "Doe",
-  userLevel: "0",
+  userLevel: "guest",
   address: "",
   dob: {
     month: "01",

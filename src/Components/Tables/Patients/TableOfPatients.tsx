@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TUser } from "../../../../../TypesAndHelpers/types";
+import { TUser } from "../../../TypesAndHelpers/types";
 
 type UserTableProps = {
   patients: TUser[];

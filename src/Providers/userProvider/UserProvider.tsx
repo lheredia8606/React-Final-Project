@@ -28,7 +28,7 @@ type TUserProviderProps = {
   signOut: () => void;
   findUserById: (userIdToFind: string) => TUser | undefined;
   handleSetCurrentUser: (user: TUser | undefined) => void;
-  getAllPatients: () => TUser[];
+  getAllUsersByLevel: (userLevel: TUser["userLevel"]) => TUser[];
 };
 
 const userContext = createContext<TUserProviderProps>({} as TUserProviderProps);
@@ -101,10 +101,10 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       }
     });
   };
-  const getAllPatients = () => {
+  const getAllUsersByLevel = (userLevel: TUser["userLevel"]) => {
     if (getAllUsersQuery.data) {
       return getAllUsersQuery.data?.filter((user) => {
-        return user.userLevel === "1";
+        return user.userLevel === userLevel;
       });
     }
     return [];
@@ -121,7 +121,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         signIn,
         signOut,
         handleSetCurrentUser,
-        getAllPatients,
+        getAllUsersByLevel,
       }}
     >
       {children}
@@ -129,4 +129,11 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useGlobalUser = () => useContext(userContext);
+export const useGlobalUser = () => {
+  const context = useContext(userContext);
+  if (!context)
+    throw new Error(
+      `Dont use 'useUserGlobal' outside the scope of a user Provider`
+    );
+  return context;
+};

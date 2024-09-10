@@ -6,7 +6,7 @@
       "password": "",
       "firstName": "Guest",
       "lastName": "Doe",
-      "userLevel": "0",
+      "userLevel": "guest",
       "address": "",
       "dob": {
         "month": "01",
@@ -20,12 +20,12 @@
       "password": "8606",
       "firstName": "Patient2",
       "lastName": "Doe",
-      "userLevel": "1",
+      "userLevel": "patient",
       "address": "",
       "dob": {
-        "month": "04",
-        "day": "05",
-        "year": "1967"
+        "month": "22",
+        "day": "22",
+        "year": "2222"
       }
     },
     {
@@ -34,7 +34,7 @@
       "password": "8606",
       "firstName": "Patient",
       "lastName": "Doe",
-      "userLevel": "1",
+      "userLevel": "patient",
       "address": "holguin",
       "dob": {
         "day": "22",
@@ -48,7 +48,7 @@
       "password": "8606",
       "firstName": "Pharmacist",
       "lastName": "Doe",
-      "userLevel": "2",
+      "userLevel": "pharmacist",
       "address": "",
       "dob": {
         "month": "09",
@@ -62,7 +62,21 @@
       "password": "8606",
       "firstName": "Provider",
       "lastName": "Doe",
-      "userLevel": "3",
+      "userLevel": "prescriber",
+      "address": "",
+      "dob": {
+        "month": "02",
+        "day": "25",
+        "year": "1985"
+      }
+    },
+    {
+      "id": "asd99g",
+      "userName": "yanet",
+      "password": "8606",
+      "firstName": "Yanet",
+      "lastName": "Perez",
+      "userLevel": "prescriber",
       "address": "",
       "dob": {
         "month": "02",
@@ -74,117 +88,25 @@
       "id": "admin",
       "userName": "admin",
       "password": "8606",
-      "firstName": "Admin",
+      "firstName": "Provider",
       "lastName": "Doe",
-      "userLevel": "4",
+      "userLevel": "admin",
       "address": "",
       "dob": {
-        "month": "08",
-        "day": "04",
-        "year": "2002"
+        "month": "02",
+        "day": "25",
+        "year": "1985"
       }
-    },
-    {
-      "id": "02d3",
-      "address": "",
-      "dob": {
-        "day": "01",
-        "month": "01",
-        "year": "2002"
-      },
-      "firstName": "12",
-      "lastName": "",
-      "password": "",
-      "userLevel": "1",
-      "userName": "asd"
-    },
-    {
-      "id": "8665",
-      "address": "",
-      "dob": {
-        "day": "01",
-        "month": "01",
-        "year": "2002"
-      },
-      "firstName": "12",
-      "lastName": "",
-      "password": "",
-      "userLevel": "1",
-      "userName": "asd"
-    },
-    {
-      "id": "c5dc",
-      "address": "",
-      "dob": {
-        "day": "01",
-        "month": "01",
-        "year": "2002"
-      },
-      "firstName": "12",
-      "lastName": "",
-      "password": "",
-      "userLevel": "1",
-      "userName": "asd"
-    },
-    {
-      "id": "9140",
-      "address": "",
-      "dob": {
-        "day": "01",
-        "month": "01",
-        "year": "2002"
-      },
-      "firstName": "12",
-      "lastName": "",
-      "password": "",
-      "userLevel": "1",
-      "userName": "asd"
-    },
-
-    {
-      "id": "88f2",
-      "userName": "totono",
-      "password": "8606",
-      "address": "5410 baywater dr",
-      "dob": {
-        "day": "13",
-        "month": "06",
-        "year": "1986"
-      },
-      "firstName": "Leandro1",
-      "lastName": "Heredia",
-      "userLevel": "1"
-    },
-    {
-      "id": "5cdc",
-      "userName": "totono",
-      "password": "8606",
-      "address": "5410 baywater dr",
-      "dob": {
-        "day": "13",
-        "month": "06",
-        "year": "1986"
-      },
-      "firstName": "Leandro2",
-      "lastName": "Heredia",
-      "userLevel": "1"
-    },
-    {
-      "id": "fee8",
-      "userName": "asdadad",
-      "password": "asdasdasd",
-      "address": "asdasda",
-      "dob": {
-        "day": "99",
-        "month": "99",
-        "year": "9999"
-      },
-      "firstName": "yandy",
-      "lastName": "campana",
-      "userLevel": "1"
     }
   ],
   "medications": [
+    {
+      "id": "sd347",
+      "name": "Enalapril",
+      "dosageForm": "Tablet",
+      "strength": "40",
+      "meassure": "mg"
+    },
     {
       "id": "23asd",
       "name": "Enalapril",

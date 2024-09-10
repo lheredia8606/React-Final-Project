@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useGlobalUser } from "../../../../../Providers/userProvider/UserProvider";
 import { TUser } from "../../../../../TypesAndHelpers/types";
 import { DatePicker } from "../../../UserProfile/DatePicker/DatePicker";
-import { TableOfPatients } from "./TableOfPatients";
+import { TableOfPatients } from "../../../../Tables/Patients/TableOfPatients";
 type TselectPatient = {
   setSelectedPatient: React.Dispatch<React.SetStateAction<TUser | undefined>>;
 };
@@ -15,10 +15,10 @@ export const SelectPatient = ({ setSelectedPatient }: TselectPatient) => {
   const [wasPatientsFound, setwasPatientsFound] = useState(true);
   const [patientsToSelect, setPatientsToSelect] = useState<TUser[]>([]);
 
-  const { getAllPatients } = useGlobalUser();
+  const { getAllUsersByLevel } = useGlobalUser();
 
   const getPatientsByDOB = () => {
-    return getAllPatients().filter((patient) => {
+    return getAllUsersByLevel("patient").filter((patient) => {
       return (
         patient.dob.day === dayInput &&
         patient.dob.month === monthInput &&
